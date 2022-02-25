@@ -1,6 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyzerProblem;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 namespace UnitTest
 {
     [TestClass]
