@@ -6,43 +6,48 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyzerProblem
 {
-    public class MoodAnalyzer
+    public class MoodAnalyser
     {
-        string msg;
-        public MoodAnalyzer()
+        string Message;
+
+        public MoodAnalyser(string Message)
         {
+            this.Message = Message;
         }
-        public MoodAnalyzer(string msg)
-        {
-            this.msg = msg;
-        }
-        public string AnalyzeMood()
+        public string AnalyseMood()
         {
             try
             {
-                if (this.msg.Equals(string.Empty))
+                if (this.Message == null)
                 {
-                    throw new MoodException(MoodException.ExceptionType.EMPTY_MOOD, "Input should not be Empty.");
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_EXCEPTION, "Mood should not be null");
+
+                }
+                if (this.Message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.EMPTY_EXCEPTION, "Mood should not be empty");
                 }
 
-                if (msg.Equals("I am in Sad Mood"))
+
+                if (Message.ToLower().Contains("sad"))
                 {
-                    return "Sad";
+                    return "sad";
                 }
-                if (msg.Equals("I am in Any Mood"))
+                else
                 {
                     return "Happy";
-                }
-                if (msg == null)
-                {
-                    return "Happy";
+
                 }
             }
-            catch (NullReferenceException)
+            catch (MoodAnalyserException e)
             {
-                throw new MoodException(MoodException.ExceptionType.NULL_MOOD, "Input should not be Empty.");
+                return e.Message;
             }
-            return null;
+            catch (NullReferenceException e)
+            {
+                return e.Message;
+            }
+
         }
     }
 }

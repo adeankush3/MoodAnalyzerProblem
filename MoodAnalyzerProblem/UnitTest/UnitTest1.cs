@@ -7,38 +7,52 @@ namespace UnitTest
     [TestClass]
     public class UnitTest1
     {
-        
+        [TestMethod]
+        public void TestMethodSadMood()
+        {
+            string message = "I Am In Sad Mood";
+            string expected = "Sad";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            string actual = moodAnalyser.AnalyseMood();
+            Assert.AreEqual(expected,actual);
+        }
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethodAnyMood()
         {
-            string message = "I am in Sad Mood";
-            MoodAnalyzer moodAnalyzer = new MoodAnalyzer(message);
-            Assert.AreEqual("Sad", moodAnalyzer.AnalyzeMood());
+            string message = "I Am In Any Mood";
+            string expected = "Happy";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            string actual = moodAnalyser.AnalyseMood();
+            Assert.AreEqual(expected, actual);
         }
-        
         [TestMethod]
-        public void TestMethod2()
+        public void TestMethrNullMood()
+
         {
-            string message1 = "I am in Any Mood";
-            MoodAnalyzer moodAnalyzer1 = new MoodAnalyzer(message1);
-            Assert.AreEqual("Happy", moodAnalyzer1.AnalyzeMood());
+            string message = "";
+            string expected = "Happy";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            string actual = moodAnalyser.AnalyseMood();
+            Assert.AreEqual(expected, actual);
         }
-        
         [TestMethod]
-        public void TestMethod3()
+        public void TestMethodCustomizedEmptyException()
         {
-            try
-            {
-                string message = null;
-                MoodAnalyzer mood = new MoodAnalyzer(message);
-                Assert.AreEqual("Happy", mood.AnalyzeMood());
-            }
-            catch(Exception ex)
-            {
-                //Console.WriteLine(ex);
-                Assert.AreEqual("Input should not be Empty.",ex.Message);
-            }
+            string message = "";
+            string expected = "Mood should not be empty";
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            string actual = moodAnalyser.AnalyseMood();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestMethodCustomizedNULLException()
+        {
+            string message = null;
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            string actual = moodAnalyser.AnalyseMood();
+            Assert.AreEqual("Mood should not be null", actual);
         }
     }
 }
