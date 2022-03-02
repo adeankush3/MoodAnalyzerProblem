@@ -10,6 +10,10 @@ namespace MoodAnalyzerProblem
     {
         string Message;
 
+        public MoodAnalyser()
+        {
+        }
+
         public MoodAnalyser(string Message)
         {
             this.Message = Message;
