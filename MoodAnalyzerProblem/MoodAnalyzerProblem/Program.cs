@@ -10,6 +10,7 @@ namespace MoodAnalyzerProblem
     {
         static void Main(string[] args)
         {
+            MoodAnalyzer mood = new MoodAnalyzer();
             Console.WriteLine("Welcome to Mood Analyzer Problem");
 
             string message = "I am in Sad Mood";
@@ -19,6 +20,10 @@ namespace MoodAnalyzerProblem
             string message1 = "I am in Any Mood";
             MoodAnalyzer moodAnalyzer1 = new MoodAnalyzer(message1);
             moodAnalyzer1.AnalyzeMood();
+
+
+
+            
         }
     }
 }

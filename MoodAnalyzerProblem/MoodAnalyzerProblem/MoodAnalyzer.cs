@@ -9,19 +9,38 @@ namespace MoodAnalyzerProblem
     public class MoodAnalyzer
     {
         string msg;
+        public MoodAnalyzer()
+        {
+        }
         public MoodAnalyzer(string msg)
         {
             this.msg = msg;
         }
         public string AnalyzeMood()
         {
-            if (msg.Equals("I am in Sad Mood"))
+            try
             {
-                return "Sad";
+                if (this.msg.Equals(string.Empty))
+                {
+                    throw new MoodException(MoodException.ExceptionType.EMPTY_MOOD, "Input should not be Empty.");
+                }
+
+                if (msg.Equals("I am in Sad Mood"))
+                {
+                    return "Sad";
+                }
+                if (msg.Equals("I am in Any Mood"))
+                {
+                    return "Happy";
+                }
+                if (msg == null)
+                {
+                    return "Happy";
+                }
             }
-            if (msg.Equals("I am in Any Mood"))
+            catch (NullReferenceException)
             {
-                return "Happy";
+                throw new MoodException(MoodException.ExceptionType.NULL_MOOD, "Input should not be Empty.");
             }
             return null;
         }
